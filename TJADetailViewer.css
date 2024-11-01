@@ -1,0 +1,57 @@
+body {
+    width: 1800px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.center {
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+#showRow {
+    width: 120px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+}
+
+#loadButton{
+    padding: 4px 15px;
+    font-size: 1em;
+}
+
+#showAreaTitle{
+    font-size: 1.75em;
+}
+
+#showArea {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 40px 0px;
+    background-color: black;
+    color: white;
+    font-size: 50px;
+    font-family: "03スマートフォントUI";
+}
+
+.rowTitle {
+    width: 800px;
+    padding: 0px 0px;
+    display: inline-block;
+    text-align: right;
+}
+
+.rowValue {
+    width: 800px;
+    padding: 10px 0px;
+    display: inline-block;
+    text-align: left;
+}
+
+#playButton, #stopButton{
+    margin-top: 10px;
+    padding: 4px 40px;
+    font-size: 1.5em;
+}

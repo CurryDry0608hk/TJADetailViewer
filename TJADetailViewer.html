@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TJA詳細情報表示ツール</title>
+    <link rel="stylesheet" href="TJADetailViewer.css">
+</head>
+<body>
+    <h1 class="center">TJA詳細情報表示ツール</h1>
+
+    <div class="center">
+        <b>表示項目</b>
+        <div id="showRow">
+            <label><input type="checkbox" id="showBPM" checked>BPM</label><br>
+            <label><input type="checkbox" id="showHS" checked>HS</label><br>
+            <label><input type="checkbox" id="showBeat">拍子</label><br>
+            <label><input type="checkbox" id="showBar">小節線</label><br>
+            <label><input type="checkbox" id="showGogo">ゴーゴー状態</label>
+        </div>
+    </div>
+
+    <div class="center">
+        <b>音源ファイル</b><br>
+        <input id="audioFile" type="file" accept=".mp3,.wav,.ogg">
+    </div>
+
+    <p class="center">
+        <b>譜面データ</b><br>
+        <textarea id="tjaData" cols="48" rows="16"></textarea>
+    </p>
+
+    <div class="center">
+        <b id="showAreaTitle">譜面情報</b>
+        <div id="showArea">
+            <div id="rowBPM">
+                <div class="rowTitle">BPM：</div><div class="rowValue" id="rowBPMValue">240</div>
+            </div>
+            <div id="rowHS">
+                <div class="rowTitle">HS：</div><div class="rowValue" id="rowHSValue">1</div>
+            </div>
+            <div id="rowBeat" style="display: none;">
+                <div class="rowTitle">拍子：</div><div class="rowValue" id="rowBeatValue">4/4</div>
+            </div>
+            <div id="rowBar" style="display: none;">
+                <div class="rowTitle">小節線：</div><div class="rowValue" id="rowBarValue">表示</div>
+            </div>
+            <div id="rowGogo" style="display: none;">
+                <div class="rowTitle">ゴーゴー状態：</div><div class="rowValue" id="rowGogoValue">非ゴーゴー</div>
+            </div>
+        </div>
+        <button id="playButton" onclick="playButtonClicked()" disabled>再生</button>
+        <button id="stopButton" onclick="stopButtonClicked()" style="display: none;">停止</button>
+    </div>
+
+    <script src="TJADetailViewer.js"></script>
+</body>
+</html>

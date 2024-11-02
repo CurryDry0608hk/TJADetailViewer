@@ -97,11 +97,11 @@ function loadTJAData(){
 
     //譜面データを配列に分割
     let tjaArray = tjaData.split("\n");
-    for(let i = 0; i < tjaArray.length; i++){
+    /*for(let i = 0; i < tjaArray.length; i++){
         if (i + 1 < tjaArray.length) {
             tjaArray[i] += "\n";
         }
-    }
+    }*/
 
 
 
@@ -163,7 +163,7 @@ function loadTJAData(){
         //#SCROLLの場合
         if((new RegExp(/^#SCROLL -?\d+(?:\.\d+)?/)).test(tmpStr)){
             //現在のHSを変更
-            nowHS = (new RegExp(/^#SCROLL (-?\d+(?:\.\d+)?)/)).exec(tmpStr)[1];
+            nowHS = (new RegExp(/^#SCROLL (-?\d+(?:\.\d+)?(?:(?:\+|-)\d+(?:\.\d+)?)?i?)/)).exec(tmpStr)[1];
             //タイミングを記録
             timeHS.push(timeObj(tmpTime, nowHS));
             //フラグを立てる

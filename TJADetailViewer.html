@@ -24,10 +24,19 @@
         <input id="audioFile" type="file" accept=".mp3,.wav,.ogg">
     </div>
 
-    <p class="center">
+    <div class="center">
         <b>譜面データ</b><br>
         <textarea id="tjaData" cols="48" rows="16"></textarea>
-    </p>
+    </div>
+
+    <details class="center">
+        <summary><b>表示のカスタマイズ</b></summary>
+        <p>背景色：<input type="color" id="backgroundColor" value="#000000"></p>
+        <p>文字色：<input type="color" id="textColor" value="#FFFFFF"></p>
+        <p>文字サイズ：<input type="text" id="textSize" value="50" style="text-align: right;" size="1" maxlength="3">px</p>
+        <p>文字のフォント：<input type="text" id="fontName" value="03スマートフォントUI" style="text-align: left;" size="25" maxlength="100"></p>
+        <p>項目の間隔：<input type="text" id="rowPadding" value="10" style="text-align: right;" size="1" maxlength="3">px</p>
+    </details>
 
     <div class="center">
         <b id="showAreaTitle">譜面情報</b>

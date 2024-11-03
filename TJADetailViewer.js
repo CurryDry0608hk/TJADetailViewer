@@ -3,8 +3,15 @@ let showHS = document.getElementById("showHS");
 let showBeat = document.getElementById("showBeat");
 let showBar = document.getElementById("showBar");
 let showGogo = document.getElementById("showGogo");
+let backgroundColorInput = document.getElementById("backgroundColor");
+let textColorInput = document.getElementById("textColor");
+let textSizeInput = document.getElementById("textSize");
+let fontNameInput = document.getElementById("fontName");
+let rowPaddingInput = document.getElementById("rowPadding");
 let fileInput = document.getElementById("audioFile");
 let tjaDataTextArea = document.getElementById("tjaData");
+let showArea = document.getElementById('showArea');
+let rowValue = document.getElementsByClassName('rowValue');
 let rowBPM = document.getElementById('rowBPM');
 let rowHS = document.getElementById('rowHS');
 let rowBeat = document.getElementById('rowBeat');
@@ -55,18 +62,38 @@ showHS.addEventListener('change', showRowChange);
 showBeat.addEventListener('change', showRowChange);
 showBar.addEventListener('change', showRowChange);
 showGogo.addEventListener('change', showRowChange);
+backgroundColorInput.addEventListener('change', showRowChange);
+textColorInput.addEventListener('change', showRowChange);
+textSizeInput.addEventListener('change', showRowChange);
+fontNameInput.addEventListener('change', showRowChange);
+rowPaddingInput.addEventListener('change', showRowChange);
 fileInput.addEventListener('change', loadAudioFile);
 tjaDataTextArea.addEventListener('change', loadTJAData);
 
 
 
-//表示項目変更
+//表示欄の更新
 function showRowChange(){
+    //表示項目の更新
     rowBPM.style.display = showBPM.checked ? "block" : "none";
     rowHS.style.display = showHS.checked ? "block" : "none";
     rowBeat.style.display = showBeat.checked ? "block" : "none";
     rowBar.style.display = showBar.checked ? "block" : "none";
     rowGogo.style.display = showGogo.checked ? "block" : "none";
+
+    //入力内容の取得
+    let backgroundColor = backgroundColorInput.value;
+    let textColor = textColorInput.value;
+    let textSize = textSizeInput.value;
+    let fontName = fontNameInput.value;
+    let rowPadding = rowPaddingInput.value;
+
+    //見た目の更新
+    showArea.style.backgroundColor = backgroundColor;
+    showArea.style.color = textColor;
+    showArea.style.fontSize = textSize + "px";
+    showArea.style.fontFamily = "'" + fontName + "'";
+    Array.from(rowValue).forEach(element => {element.style.padding = rowPadding + "px 0px"});
 }
 
 //音源ファイル読み込み
@@ -97,11 +124,6 @@ function loadTJAData(){
 
     //譜面データを配列に分割
     let tjaArray = tjaData.split("\n");
-    /*for(let i = 0; i < tjaArray.length; i++){
-        if (i + 1 < tjaArray.length) {
-            tjaArray[i] += "\n";
-        }
-    }*/
 
 
 
@@ -139,7 +161,7 @@ function loadTJAData(){
     timeGogo.push(timeObj(-1000000, "非ゴーゴー"));
 
     //#STARTの位置を検索
-    let startIndex;
+    let startIndex = 0;
     for(let i = 0; i < tjaArray.length; i++){
         if((new RegExp(/^#START/)).test(tjaArray[i])){
             startIndex = i;
@@ -323,7 +345,7 @@ function playButtonClicked(){
     currentIndexBar = 0;
     currentIndexGogo = 0;
 
-    //表示欄の更新処理を実行
+    //表示欄の内容更新処理を実行
     showAreaUpdate();
 }
 
@@ -348,11 +370,11 @@ function stopButtonClicked(){
         rowGogoValue.innerText = timeGogo[0].value;
     }
 
-    //表示欄の更新処理を停止
+    //表示欄の内容更新処理を停止
     cancelAnimationFrame(loop);
 }
 
-//表示欄の更新処理
+//表示欄の内容更新処理
 function showAreaUpdate(){
     //現在の時間を取得
     let nowTime = Date.now();
